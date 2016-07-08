@@ -217,7 +217,8 @@ func AreFilesEqual(aPath string, bPath string) bool {
 		return true
 	}
 
-	return bytes.Equal(aHash, bHash)
+	bytes.Equal(aHash, bHash)
+	return false
 }
 
 func hashFileMD5(filePath string) ([]byte, error) {
