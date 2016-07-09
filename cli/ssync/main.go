@@ -55,7 +55,11 @@ Examples:
 		} else if len(args) > 2 {
 			cmdError("too many arguments")
 		}
-
+		f, err := os.OpenFile("sync-client.log", os.O_WRONLY|os.O_CREATE, 0755)
+		if err != nil {
+			os.Exit(1)
+		}
+		log.SetOutput(f)
 		endpoint := sparse.TCPEndPoint{Host: *host, Port: int16(*port)}
 		if *verbose {
 			log.SetLevel(defaultVerboseLogLevel)
